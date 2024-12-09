@@ -5,7 +5,6 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import CarouselHome from "./CarouselHome.js";
 import { debounce } from "lodash";
 
 import Img1 from "../Images/Scroll-images/sc1.webp";
@@ -17,6 +16,7 @@ import Img6 from "../Images/Scroll-images/sc6.webp";
 import Img7 from "../Images/Scroll-images/sc7.webp";
 
 const Features_card = lazy(() => import("./Features_card.js"));
+const CarouselHome = lazy(() => import("./CarouselHome.js"));
 const Card2 = lazy(() => import("./Card2.js"));
 
 const images = [
