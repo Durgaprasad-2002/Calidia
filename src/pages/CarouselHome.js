@@ -70,4 +70,5 @@ const Slider = () => {
     </div>
   );
 };
-export default Slider;
+
+export default React.memo(Slider);
