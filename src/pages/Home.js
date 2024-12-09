@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import CarouselHome from "./CarouselHome/CarouselHome.js";
+import CarouselHome from "./CarouselHome.js";
 import { debounce } from "lodash";
 
 import Img1 from "../Images/Scroll-images/sc1.webp";
