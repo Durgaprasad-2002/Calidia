@@ -4,6 +4,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./styles.css";
 
+import "../index.css";
+
 import Img1 from "../../Images/CoverImages/cv1.jpg";
 import Img2 from "../../Images/CoverImages/cv2.jpg";
 import Img3 from "../../Images/CoverImages/cv3.jpg";
