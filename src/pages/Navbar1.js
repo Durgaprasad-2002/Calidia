@@ -201,7 +201,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
   const { t } = useTranslation();
   const location = useLocation();
   const [path, setPath] = useState("/");
-  const cartItems = useSelector((state) => state.cart.value);
+  // const cartItems = useSelector((state) => state.cart.value);
   const [bg, setBg] = useState(false);
   const [togShow, setTogShow] = useState(false);
 
@@ -339,7 +339,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
                     </Link>
                   </li>
                 ))}
-                {cartpos && (
+                {/* {cartpos && (
                   <li className="outer-li">
                     <Link to="/cart" style={{ textDecoration: "none" }}>
                       <li style={{ color: path === "/cart" ? "white" : "" }}>
@@ -352,7 +352,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
                       </li>
                     </Link>
                   </li>
-                )}
+                )} */}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

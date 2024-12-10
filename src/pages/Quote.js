@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import NavbarApp from "./Navbar1";
@@ -12,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useTranslation } from "react-i18next";
 
+import { IoLogoWhatsapp } from "react-icons/io";
 import DummyImg from "../Images/Scroll-images/dummyImg.jpg";
 
 const CategoryList = ({ categorynum, handleCategory }) => {
@@ -63,9 +65,31 @@ const ProductItem = ({ data, index, handleCart }) => {
         }}
       />
       <h4 className="product-name">{t(`p-${Number(data.id) + 1}`)}</h4>
+      <div className="buttons-container-quote">
+        <a
+          className="button-quote-1"
+          href="tel:+353894310610"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Call Now
+        </a>
+
+        <a
+          href={`https://wa.me/+353894310610?text=Hello,\n I want to know Quote on this '${t(
+            `p-${Number(data.id) + 1}`
+          )}'`}
+          target="_blank"
+          rel="noreferrer"
+          className="button-quote-2"
+        >
+          <IoLogoWhatsapp className="quote-whatapp" />
+          Get Quote
+        </a>
+      </div>
       <div className="quantity-container">
-        <h4 className="quantity">{t("quote_t4")}</h4>
-        <div className="increments-holder">
+        {/* <h4 className="quantity">{t("quote_t4")}</h4> */}
+        {/* <div className="increments-holder">
           <button
             className="qa-icon"
             onClick={() => setQuantity((prev) => Math.max(prev - 1, 0))}
@@ -85,9 +109,9 @@ const ProductItem = ({ data, index, handleCart }) => {
           >
             <FaPlus />
           </button>
-        </div>
+        </div> */}
       </div>
-      <button
+      {/* <button
         className="btn-8"
         onClick={() => {
           handleCart(data, quantity, data.id);
@@ -95,7 +119,7 @@ const ProductItem = ({ data, index, handleCart }) => {
         }}
       >
         {t("quote_t5")}
-      </button>
+      </button> */}
     </div>
   );
 };
@@ -271,204 +295,3 @@ export default function Quote() {
     </>
   );
 }
-
-// import React, { useState, useEffect } from "react";
-// import "./index.css";
-// import NavbarApp from "./Navbar1";
-// import Footer from "./Footer";
-// import products from "./Products";
-// import { FaPlus, FaMinus } from "react-icons/fa";
-// import { useSelector, useDispatch } from "react-redux";
-// import { addItem } from "../Slices/Carts/Cart";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import { useLocation } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import { useTranslation } from "react-i18next";
-
-// const CategoryList = ({ categorynum, handleCategory }) => {
-//   const { t } = useTranslation();
-//   const categories = ["rice", "Pulses", "Flours", "Vegetables", "Fruits"];
-
-//   return (
-//     <div className="col-md-2 cat-con">
-//       <div className="row" id="sticky-pos">
-//         <div className="category">
-//           <h4 className="category-title">{t("quote_t2")} </h4>
-//           <ul>
-//             {categories.map((cat) => (
-//               <li
-//                 key={cat}
-//                 className="quote-categorie"
-//                 style={{
-//                   borderColor: categorynum === cat ? "#f74845" : "darkgrey",
-//                   color: categorynum === cat ? "white" : "darkgrey",
-//                   background: categorynum === cat ? "#f74845" : "none",
-//                 }}
-//                 onClick={() => handleCategory(cat)}
-//               >
-//                 <span>{categorynum === cat ? "×" : "+"}</span>{" "}
-//                 {t(`card2_t${categories.indexOf(cat) + 10}`)}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const ProductItem = ({ data, index, handleCart }) => {
-//   const { t } = useTranslation();
-//   const [quantity, setQuantity] = useState(0);
-
-//   return (
-//     <div className="product-item">
-//       <span className="cat-name">{data.category}</span>
-//       <img className="product-img" src={data.img} alt={data.productName} />
-//       <h4 className="product-name">{t(`p-${Number(data.id) + 1}`)}</h4>
-//       <div className="quantity-container">
-//         <h4 className="quantity">{t("quote_t4")}</h4>
-//         <div className="increments-holder">
-//           <button
-//             className="qa-icon"
-//             onClick={() => setQuantity((prev) => Math.max(prev - 1, 0))}
-//           >
-//             <FaMinus />
-//           </button>
-//           <input
-//             readOnly
-//             type="number"
-//             className="quan-val"
-//             value={quantity}
-//             placeholder="0"
-//           />
-//           <button
-//             className="qa-icon"
-//             onClick={() => setQuantity((prev) => prev + 1)}
-//           >
-//             <FaPlus />
-//           </button>
-//         </div>
-//       </div>
-//       <button
-//         className="btn-8"
-//         onClick={() => {
-//           handleCart(data, quantity, data.id);
-//           setQuantity(0);
-//         }}
-//       >
-//         {t("quote_t5")}
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default function Quote() {
-//   const { t } = useTranslation();
-//   const location = useLocation();
-//   const [items, setItems] = useState(products.products);
-//   const [categorynum, setCategorynum] = useState("none");
-//   const dispatch = useDispatch();
-
-//   const handleCart = (item, count, index) => {
-//     if (count > 0) {
-//       dispatch(
-//         addItem({
-//           productImg: item.img,
-//           productName: item.productName,
-//           quantity: count,
-//           id: index,
-//         })
-//       );
-//       toast(`${item.productName} ${t("toast_t5")}`);
-//     } else {
-//       toast(t("toast_t6"));
-//     }
-//   };
-
-//   const filterProducts = (category) => {
-//     const filteredProducts = products.products.filter(
-//       (product) => product.category === category
-//     );
-//     setItems(filteredProducts);
-//     document.documentElement.scrollTop = 0;
-//   };
-
-//   const handleCategory = (category) => {
-//     if (categorynum === category) {
-//       setCategorynum("none");
-//       setItems(products.products);
-//     } else {
-//       setCategorynum(category);
-//       filterProducts(category);
-//     }
-//   };
-
-//   useEffect(() => {
-//     if (location?.state) {
-//       setCategorynum(location.state);
-//       filterProducts(location.state);
-//     }
-//     document.documentElement.scrollTop = 0;
-//   }, [location]);
-
-//   return (
-//     <>
-//       <NavbarApp bg={false} home={false} cartpos={true} />
-//       <div className="quote-outer">
-//         <br />
-//         <ToastContainer
-//           position="top-right"
-//           autoClose={3000}
-//           hideProgressBar={false}
-//           newestOnTop
-//           closeOnClick
-//           rtl={false}
-//           pauseOnFocusLoss
-//           draggable
-//           pauseOnHover
-//           theme="light"
-//         />
-//         <div className="container-fluid">
-//           <div className="row">
-//             <h1 className="head-category">{t("quote_t1")}</h1>
-//           </div>
-//           <div className="row">
-//             <CategoryList
-//               categorynum={categorynum}
-//               handleCategory={handleCategory}
-//             />
-//             <div className="col-md-10">
-//               <div className="items-container">
-//                 {items.length > 0 ? (
-//                   items.map((data, key) => (
-//                     <ProductItem
-//                       key={data.id}
-//                       data={data}
-//                       index={key}
-//                       handleCart={handleCart}
-//                     />
-//                   ))
-//                 ) : (
-//                   <div
-//                     className="d-flex align-items-center w-50"
-//                     style={{ width: "100%", height: "70vh" }}
-//                   >
-//                     <div
-//                       className="spinner-border ms-auto"
-//                       aria-hidden="true"
-//                     ></div>
-//                   </div>
-//                 )}
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       <br />
-//       <br />
-//       <Footer />
-//     </>
-//   );
-// }

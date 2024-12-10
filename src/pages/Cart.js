@@ -77,6 +77,7 @@ export default function Cart() {
         pauseOnHover
         theme="light"
       />
+      <br />
       <div className="cart-outer">
         <div className="container-fluid">
           {cartItems.length > 0 && (
