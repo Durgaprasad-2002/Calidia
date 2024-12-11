@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import NavbarApp from "./Components/Navbar1";
 import Footer from "./Components/Footer";
@@ -12,6 +13,8 @@ import axios from "axios";
 export default function Contact() {
   // varibales and State hooks
   const { t } = useTranslation();
+  const form = useRef(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -32,15 +35,18 @@ export default function Contact() {
   // Handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(() => true);
     axios
-      .post("https://staar-s6o4.onrender.com/postContact", { User: formData })
+      .post("http://localhost:5000/api/contact", { ...formData })
       .then(() => {
+        form.current.reset();
         toast.success(t("toast_t3"));
       })
       .catch((err) => {
         toast.error(t("toast_t4"));
         console.error("Error:", err);
-      });
+      })
+      .finally(() => setLoading(() => false));
   };
 
   useEffect(() => {
@@ -112,7 +118,7 @@ export default function Contact() {
             </div>
             <div className="col-md-6">
               <h3 className="input-head">{t("contact_t12")}</h3>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} ref={form}>
                 <div className="Input-Holders">
                   {[
                     {
@@ -147,10 +153,6 @@ export default function Contact() {
                     },
                   ].map((input, index) => (
                     <div key={index} className="input-group">
-                      {/* <label className="input-field-label">
-                        {input.label}
-                        <sup>*</sup>
-                      </label> */}
                       <div className="input-field-outer">
                         {input.type === "textarea" ? (
                           <textarea
@@ -175,8 +177,12 @@ export default function Contact() {
                     </div>
                   ))}
                   <div className="input-field-outer">
-                    <button type="submit" className="contact-button1">
-                      {t("contact_t11")}
+                    <button
+                      type="submit"
+                      className="contact-button1"
+                      disabled={loading}
+                    >
+                      {loading ? "Submitting..." : t("contact_t11")}
                     </button>
                   </div>
                 </div>

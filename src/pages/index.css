@@ -965,6 +965,10 @@ li {
   background-color: #a5721e;
 }
 
+.contact-button1:disabled {
+  background: lightgray;
+}
+
 .outer-contact {
   margin: 120px 15px 70px 15px;
   min-height: 80vh;
