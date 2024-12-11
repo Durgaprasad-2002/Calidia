@@ -1,19 +1,20 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
-import "./index.css";
+import "../index.css";
+
+import Home_Multiple_Slider from "./Home_Multiple_Slider";
+
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Home_Multiple_Slider from "./Home_Multiple_Slider";
 
 import { useInView } from "react-intersection-observer";
 import "animate.css";
 
-import rice from "../Images/Card-2/rice.jpeg";
-import flour from "../Images/Card-2/flour.jpeg";
-import veg from "../Images/Card-2/veg.jpeg";
-import pulses from "../Images/Card-2/pulses.avif";
-
-import fruits from "../Images/Card-2/fruits.webp";
+import rice from "../../Images/HomeMultiSlider/rice.jpeg";
+import flour from "../../Images/HomeMultiSlider/flour.jpeg";
+import veg from "../../Images/HomeMultiSlider/veg.jpeg";
+import pulses from "../../Images/HomeMultiSlider/pulses.avif";
+import fruits from "../../Images/HomeMultiSlider/fruits.webp";
 
 export default function Card2() {
   const [ref1, view1] = useInView({
@@ -54,12 +55,9 @@ export default function Card2() {
           </div>
         </h2>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="container-fluid " id="outer-card2">
-        <div className="row">
+
+      <div className="ProductInfoHomeContainer" id="outer-card2">
+        <div className="">
           <Home_Multiple_Slider
             sub={toSubLAw}
             dir={false}
@@ -67,10 +65,10 @@ export default function Card2() {
             descprition={t("card2_t3")}
             link={"rice"}
             img={rice}
-            key={1}
+            key={"rice-slider"}
           />
         </div>
-        <div className="row">
+        <div className="">
           <Home_Multiple_Slider
             sub={toSubLAw}
             dir={true}
@@ -78,10 +76,10 @@ export default function Card2() {
             descprition={t("card2_t5")}
             link={"Pulses"}
             img={pulses}
-            key={1}
+            key={"pulses-slider"}
           />
         </div>
-        <div className="row">
+        <div className="">
           <Home_Multiple_Slider
             dir={false}
             sub={toSubLAw}
@@ -89,11 +87,11 @@ export default function Card2() {
             descprition={t("card2_t6")}
             link={"Flours"}
             img={flour}
-            key={1}
+            key={"Flour-slider"}
           />
         </div>
 
-        <div className="row">
+        <div className="">
           <Home_Multiple_Slider
             dir={true}
             sub={toSubLAw}
@@ -101,11 +99,11 @@ export default function Card2() {
             descprition={t("card2_t7")}
             link={"Fruits"}
             img={fruits}
-            key={1}
+            key={"Fruits-slider"}
           />
         </div>
 
-        <div className="row">
+        <div className="">
           <Home_Multiple_Slider
             dir={false}
             sub={toSubLAw}
@@ -113,7 +111,7 @@ export default function Card2() {
             descprition={t("card2_t8")}
             link={"Vegetables"}
             img={veg}
-            key={1}
+            key={"Vegetable-slider"}
           />
         </div>
       </div>

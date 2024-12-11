@@ -1,20 +1,20 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import NavbarApp from "./Navbar1";
-import Footer from "./Footer";
-import products from "./Products";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { addItem } from "../Slices/Carts/Cart";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+import NavbarApp from "./Components/Navbar1";
+import Footer from "./Components/Footer";
+import products from "../assets/data";
+
+import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useTranslation } from "react-i18next";
 
 import { IoLogoWhatsapp } from "react-icons/io";
-import DummyImg from "../Images/Scroll-images/dummyImg.jpg";
+
+import NotFound from "../Images/notfound.jpg";
+import LoadingImg from "../Images/loading.webp";
 
 const CategoryList = ({ categorynum, handleCategory }) => {
   const { t } = useTranslation();
@@ -48,10 +48,8 @@ const CategoryList = ({ categorynum, handleCategory }) => {
   );
 };
 
-const ProductItem = ({ data, index, handleCart }) => {
+const ProductItem = ({ data }) => {
   const { t } = useTranslation();
-  const [quantity, setQuantity] = useState(0);
-
   return (
     <div className="product-item">
       <span className="cat-name">{data.category}</span>
@@ -60,8 +58,7 @@ const ProductItem = ({ data, index, handleCart }) => {
         src={data.img}
         alt={data.productName}
         onError={(e) => {
-          e.target.src =
-            "https://lh5.googleusercontent.com/proxy/t08n2HuxPfw8OpbutGWjekHAgxfPFv-pZZ5_-uTfhEGK8B5Lp-VN4VjrdxKtr8acgJA93S14m9NdELzjafFfy13b68pQ7zzDiAmn4Xg8LvsTw1jogn_7wStYeOx7ojx5h63Gliw";
+          e.currentTarget.src = NotFound;
         }}
       />
       <h4 className="product-name">{t(`p-${Number(data.id) + 1}`)}</h4>
@@ -74,7 +71,6 @@ const ProductItem = ({ data, index, handleCart }) => {
         >
           Call Now
         </a>
-
         <a
           href={`https://wa.me/+353894310610?text=Hello,\n I want to know Quote on this '${t(
             `p-${Number(data.id) + 1}`
@@ -87,39 +83,6 @@ const ProductItem = ({ data, index, handleCart }) => {
           Get Quote
         </a>
       </div>
-      <div className="quantity-container">
-        {/* <h4 className="quantity">{t("quote_t4")}</h4> */}
-        {/* <div className="increments-holder">
-          <button
-            className="qa-icon"
-            onClick={() => setQuantity((prev) => Math.max(prev - 1, 0))}
-          >
-            <FaMinus />
-          </button>
-          <input
-            readOnly
-            type="number"
-            className="quan-val"
-            value={quantity}
-            placeholder="0"
-          />
-          <button
-            className="qa-icon"
-            onClick={() => setQuantity((prev) => prev + 1)}
-          >
-            <FaPlus />
-          </button>
-        </div> */}
-      </div>
-      {/* <button
-        className="btn-8"
-        onClick={() => {
-          handleCart(data, quantity, data.id);
-          setQuantity(0);
-        }}
-      >
-        {t("quote_t5")}
-      </button> */}
     </div>
   );
 };
@@ -171,7 +134,6 @@ export default function Quote() {
   const location = useLocation();
   const [items, setItems] = useState(products.products);
   const [categorynum, setCategorynum] = useState("none");
-  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -180,27 +142,11 @@ export default function Quote() {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  const handleCart = (item, count, index) => {
-    if (count > 0) {
-      dispatch(
-        addItem({
-          productImg: item.img,
-          productName: item.productName,
-          quantity: count,
-          id: index,
-        })
-      );
-      toast(`${item.productName} ${t("toast_t5")}`);
-    } else {
-      toast(t("toast_t6"));
-    }
-  };
-
   const filterProducts = (category) => {
     const filteredProducts = products.products.filter(
       (product) => product.category === category
     );
-    setItems(filteredProducts);
+    setItems(() => filteredProducts);
     document.documentElement.scrollTop = 0;
   };
 
@@ -208,6 +154,7 @@ export default function Quote() {
     if (categorynum === category) {
       setCategorynum("none");
       setItems(products.products);
+      setCurrentPage(() => 1);
     } else {
       setCategorynum(category);
       filterProducts(category);
@@ -223,9 +170,17 @@ export default function Quote() {
   }, [location]);
 
   // Pagination Logic
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  let indexOfLastItem = currentPage * itemsPerPage;
+  let indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  let currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    indexOfLastItem = currentPage * itemsPerPage;
+    indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+    setCurrentPage(1);
+  }, [items]);
 
   return (
     <>
@@ -238,7 +193,7 @@ export default function Quote() {
           className="Toast-own"
           position="top-right"
           autoClose={3000}
-          hideProgressBar={false}
+          hideProgressBar={true}
           newestOnTop
           closeOnClick
           rtl={false}
@@ -260,12 +215,7 @@ export default function Quote() {
               <div className="items-container">
                 {currentItems.length > 0 ? (
                   currentItems.map((data, key) => (
-                    <ProductItem
-                      key={data.id}
-                      data={data}
-                      index={key}
-                      handleCart={handleCart}
-                    />
+                    <ProductItem key={data.id} data={data} index={key} />
                   ))
                 ) : (
                   <div

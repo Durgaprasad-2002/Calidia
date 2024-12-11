@@ -1,27 +1,27 @@
 import React, { useEffect } from "react";
 import "./index.css";
 
-import NavbarApp from "./Navbar1";
-import Footer from "./Footer";
+import NavbarApp from "./Components/Navbar1";
+import Footer from "./Components/Footer";
 import { useInView } from "react-intersection-observer";
 import "animate.css";
 
 export default function Why() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const [ref1, view1] = useInView({
     rootMargin: "0px 0px -100px 0px",
     triggerOnce: true,
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <NavbarApp bg={false} home={false} cartpos={false} showBG={true} />
       <br />
       <br />
       <br />
-      <br />
-
       <section className="why-box">
         <div
           ref={ref1}

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import "../index.css";
+
 import Carousel from "react-multi-carousel";
 
 import "react-multi-carousel/lib/styles.css";
-import "./styles.css";
+import "../styles.css";
 
-import "./index.css";
-
-import Img1 from "../Images/CoverImages/cv1.jpg";
-import Img2 from "../Images/CoverImages/cv2.jpg";
-import Img3 from "../Images/CoverImages/cv3.jpg";
-import Img4 from "../Images/CoverImages/cv4.jpg";
+import Img1 from "../../Images/CoverImages/cv1.jpg";
+import Img2 from "../../Images/CoverImages/cv2.jpg";
+import Img3 from "../../Images/CoverImages/cv3.jpg";
+import Img4 from "../../Images/CoverImages/cv4.jpg";
 
 import { useTranslation } from "react-i18next";
 
@@ -21,20 +21,8 @@ const responsive = {
   },
 };
 
-const sliderImageUrl = [
-  {
-    img: Img1,
-  },
-  {
-    img: Img2,
-  },
-  {
-    img: Img3,
-  },
-  {
-    img: Img4,
-  },
-];
+const sliderImageUrl = [Img1, Img2, Img3, Img4];
+
 const Slider = () => {
   const { t } = useTranslation();
 
@@ -51,18 +39,18 @@ const Slider = () => {
       <Carousel
         responsive={responsive}
         autoPlay={true}
-        swipeable={false}
-        draggable={false}
+        swipeable={true}
+        draggable={true}
         showDots={false}
         infinite={true}
-        partialVisible={true}
+        partialVisible={false}
         arrows={false}
         dotListClass="custom-dot-list-style"
       >
         {sliderImageUrl.map((imageUrl, index) => {
           return (
             <div className="slider" key={index}>
-              <img src={imageUrl.img} alt="movie" />
+              <img src={imageUrl} alt={`slider-Img-${index}`} />
             </div>
           );
         })}
@@ -71,4 +59,4 @@ const Slider = () => {
   );
 };
 
-export default React.memo(Slider);
+export default Slider;

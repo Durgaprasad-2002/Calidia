@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
-import NavbarApp from "./Navbar1";
-import Footer from "./Footer";
+
+import NavbarApp from "./Components/Navbar1";
+import Footer from "./Components/Footer";
+
 import { CiLocationOn, CiPhone, CiMail } from "react-icons/ci";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 export default function Contact() {
+  // varibales and State hooks
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -17,6 +20,7 @@ export default function Contact() {
     msg: "",
   });
 
+  // Handle Form Change
   const handleForm = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -25,12 +29,13 @@ export default function Contact() {
     }));
   };
 
+  // Handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("https://staar-s6o4.onrender.com/postContact", { User: formData })
       .then(() => {
-        alert(t("toast_t3"));
+        toast.success(t("toast_t3"));
       })
       .catch((err) => {
         toast.error(t("toast_t4"));
@@ -64,12 +69,6 @@ export default function Contact() {
           <div className="row">
             <div className="col-md-6" id="contact-img">
               <div className="Address-holders">
-                <div className="address">
-                  <h2 className="address-title">
-                    <span className="address-subtitle">{t("contact_t1")}</span>
-                    <br />
-                  </h2>
-                </div>
                 <div className="address">
                   <h4>
                     <CiLocationOn className="contact-icon" />

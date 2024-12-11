@@ -1,20 +1,23 @@
 import React from "react";
-import "./index.css";
+import "../index.css";
 
 import { useTranslation } from "react-i18next";
-import card1 from "../Images/Scroll-images/sc7.webp";
-import card2 from "../Images/Scroll-images/sc1.webp";
-import card3 from "../Images/Scroll-images/sc2.webp";
+
+import card1 from "../../Images/Scroll-images/sc7.webp";
+import card2 from "../../Images/Scroll-images/sc1.webp";
+import card3 from "../../Images/Scroll-images/sc2.webp";
+
 import { useInView } from "react-intersection-observer";
 import "animate.css";
 
 export default function Features_card() {
+  //variables and state
   const { t } = useTranslation();
-
   const [ref2, view2] = useInView({
     rootMargin: "0px 0px -100px 0px",
     triggerOnce: true,
   });
+
   return (
     <div
       ref={ref2}

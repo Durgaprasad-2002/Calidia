@@ -30,6 +30,12 @@ let products = [
     id: 4,
   },
   {
+    img: "https://m.media-amazon.com/images/I/715DLBWS-vS.jpg",
+    category: "rice",
+    productName: "Jeerakasala Rice",
+    id: 53,
+  },
+  {
     img: "https://5.imimg.com/data5/KN/XB/NH/SELLER-19010209/toor-dal.jpg",
     category: "Pulses",
     productName: "Toor Dal",

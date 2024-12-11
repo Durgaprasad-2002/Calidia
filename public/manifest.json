@@ -1,9 +1,9 @@
 {
-  "short_name": "Staar Foods",
-  "name": "Bringing Nature's Best to Your Table, Across Continents",
+  "short_name": "Calidia Foods",
+  "name": "CaliDia Foods Your Trusted Source for Authentic Indian Food Products.",
   "icons": [
     {
-      "src": "staarlogo.png",
+      "src": "calidia.png",
       "type": "image/png"
     }
   ],

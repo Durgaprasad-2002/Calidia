@@ -1,13 +1,17 @@
 import React from "react";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import "./index.css";
+import "../index.css";
+
+import { FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 export default function Footer(props) {
   const { t } = useTranslation();
+
   return (
     <>
       <div class="footer">
@@ -23,7 +27,12 @@ export default function Footer(props) {
             <div className="footer-icons">
               <FaFacebook className="icon" />
               <FaTwitter className="icon" />
-              <FaLinkedin className="icon" />
+              <a
+                href="https://www.instagram.com/calidiafoods?igsh=MTdjOGFhd3Mwbm0zcg%3D%3D&utm_source=qr"
+                target="_blank"
+              >
+                <FaInstagram className="icon" />
+              </a>
             </div>
           </div>
           <div className="items col-item">
@@ -90,7 +99,7 @@ export default function Footer(props) {
 
         <div className="copy-rights">
           <div className="cpy-1">
-            <a href="tel:9515066474">Designed & Developed by The W3b Dev's👨🏻‍💻</a>
+            <a href="tel:9177943677">Designed & Developed by The W3b Dev's👨🏻‍💻</a>
           </div>
           <div className="cpy-2">{t("footer_t10")}</div>
         </div>
