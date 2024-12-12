@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../index.css";
 
 import Carousel from "react-multi-carousel";
@@ -27,7 +27,7 @@ const sliderImageUrl = [Img1, Img2, Img3, Img4];
 const Slider = () => {
   const { t } = useTranslation();
 
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  // const [imagesLoaded, setImagesLoaded] = useState(false);
 
   // Use useEffect to ensure images are cached
   useEffect(() => {
@@ -43,7 +43,7 @@ const Slider = () => {
 
       Promise.all(imagePromises)
         .then(() => {
-          setImagesLoaded(true);
+          // setImagesLoaded(true);
         })
         .catch((err) => console.error("Error loading images:", err));
     };
@@ -68,32 +68,26 @@ const Slider = () => {
         responsive={responsive}
         autoPlay={true}
         autoPlaySpeed={5000}
-        swipeable={true}
-        draggable={true}
+        swipeable={false}
+        draggable={false}
         showDots={false}
-        infinite={true}
         arrows={false}
+        infinite
+        customTransition="transform 0.5s ease-in-out, opacity 0.5s ease-in-out"
+        transitionDuration={500}
         dotListClass="custom-dot-list-style"
         containerClass="carousel-container"
         keyBoardControl={true}
       >
         {sliderImageUrl.map((imageUrl, index) => (
           <div className="slider" key={index}>
-            <Suspense
-              fallback={<div className="image-placeholder">Loading...</div>}
-            >
-              {imagesLoaded ? (
-                <img
-                  src={imageUrl}
-                  alt={`slider-Img-${index}`}
-                  loading="lazy"
-                  tabIndex="-1"
-                  className="carousel-image"
-                />
-              ) : (
-                <div className="image-placeholder">Loading...</div>
-              )}
-            </Suspense>
+            <img
+              src={imageUrl}
+              alt={`slider-Img-${index}`}
+              loading="lazy"
+              tabIndex="-1"
+              className="carousel-image"
+            />
           </div>
         ))}
       </Carousel>
@@ -102,6 +96,8 @@ const Slider = () => {
 };
 
 export default Slider;
+
+// -----------------------------------------------------------------------------------
 
 // import React, { Suspense } from "react";
 // import "../index.css";

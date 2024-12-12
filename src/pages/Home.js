@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import "./index.css";
 
-import NavbarApp from "./Components/Navbar1";
+import NavbarApp from "./Components/Navbar1.js";
 import Footer from "./Components/Footer";
 import Loading from "./Components/Loader.js";
 
@@ -43,16 +43,11 @@ const Home = () => {
   const [navScroll, setNavScroll] = useState(0);
   const [display, setDisplay] = useState("block");
   const scrollRef = useRef(null);
-  const [isHome, setIsHome] = useState(true);
+  // const [isHome, setIsHome] = useState(false);
 
   //handling Scrolling Effects
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerWidth < 991) {
-        setIsHome(() => false);
-        return;
-      }
-      setIsHome(() => true);
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       setDisplay(scrollTop > 60 ? "none" : "block");
@@ -61,13 +56,6 @@ const Home = () => {
       if (scrollRef.current) {
         scrollRef.current.style.transform = `translateX(${-scrollTop}px)`;
       }
-      // if (scrollRef.current) {
-      //   for (let i = 0; i < scrollRef.current.children.length; i++) {
-      //     scrollRef.current.children[
-      //       i
-      //     ].style.transform = `translateX(${-scrollTop}px)`;
-      //   }
-      // }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -90,6 +78,11 @@ const Home = () => {
     i18next.changeLanguage(event.target.value);
   };
 
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <>
       {/* Internationalization Buttom */}
@@ -106,12 +99,7 @@ const Home = () => {
       </div>
 
       {/* Navbar */}
-      <NavbarApp
-        cartpos={false}
-        bg={true}
-        home={isHome}
-        navscroll={navScroll}
-      />
+      <NavbarApp cartpos={false} bg={true} home={true} navscroll={navScroll} />
 
       {/* Carousel Container */}
       <Suspense fallback={<Loading />}>

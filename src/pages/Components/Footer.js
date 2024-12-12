@@ -30,6 +30,7 @@ export default function Footer(props) {
               <a
                 href="https://www.instagram.com/calidiafoods?igsh=MTdjOGFhd3Mwbm0zcg%3D%3D&utm_source=qr"
                 target="_blank"
+                rel="noreferrer"
               >
                 <FaInstagram className="icon" />
               </a>

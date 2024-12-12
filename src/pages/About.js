@@ -31,24 +31,6 @@ function About() {
     document.documentElement.scrollTop = 0;
   }, []);
 
-  // function IncrementCounter(countriesTarget, qualityTarget, soldTarget) {
-  //   const totalSteps = soldTarget;
-  //   let stepsCompleted = 0;
-  //   const interval = setInterval(() => {
-  //     setCounts((prevCounts) => {
-  //       const newCounts = { ...prevCounts };
-  //       if (stepsCompleted < totalSteps) newCounts.sold = stepsCompleted + 1;
-  //       stepsCompleted += 1;
-  //       if (stepsCompleted >= totalSteps) clearInterval(interval);
-  //       return newCounts;
-  //     });
-  //   }, 3000 / totalSteps);
-  // }
-
-  // useEffect(() => {
-  //   if (view2) IncrementCounter(10, 95, 4000);
-  // }, [view2]);
-
   return (
     <>
       <NavbarApp bg={true} home={false} cartpos={false} />
