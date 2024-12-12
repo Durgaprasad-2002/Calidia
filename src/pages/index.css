@@ -986,7 +986,7 @@ li {
   height: fit-content;
 }
 #contact-img {
-  background: url("../Images/HomeMultiSlider/contact.webp");
+  background-image: url("../Images/HomeMultiSlider/contact.webp");
   height: auto;
   padding: 0;
   min-height: 500px;
@@ -1554,19 +1554,21 @@ body {
 }
 
 .img-box {
+  border-radius: 30px;
   width: auto;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 body {
   overflow-x: hidden;
 }
 .expand-img {
-  border-radius: 30px;
   width: 100%;
   max-width: 700px;
   object-fit: cover;
 }
 
 .info-box {
+  border-bottom: 7px solid #386909;
   position: relative;
   margin: auto -40px;
   max-width: 500px;
@@ -1574,7 +1576,7 @@ body {
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: #fff;
-  padding: 50px 20px;
+  padding: 20px;
   height: max-content;
   box-sizing: border-box;
 }

@@ -22,12 +22,12 @@ export default function Features_card() {
     <div
       ref={ref2}
       className={`Features content-section ${
-        view2 ? `animate__animated animate__backInUp content-vis` : ""
+        view2 ? `animate__animated animate__bounceInUp  content-vis` : ""
       }`}
     >
-      <div class="carousel-wrapper">
+      <div className="carousel-wrapper">
         <h2 className="title-feature-head">Our Commitment</h2>
-        <div class="infinity carousel">
+        <div className="infinity carousel">
           <input type="radio" name="slides" id="slides_1" />
           <input type="radio" name="slides" id="slides_2" />
           <input type="radio" name="slides" id="slides_3" />
@@ -57,18 +57,18 @@ export default function Features_card() {
             </li>
           </ul>
 
-          <div class="navigation">
-            <label for="slides_1" class="slide" matRipple>
+          <div className="navigation">
+            <label htmlFor="slides_1" className="slide" matripple="true">
               <h3>{t("card1_t1")}</h3>
               <p>{t("card1_t2")}</p>
             </label>
 
-            <label for="slides_2" class="slide" matRipple>
+            <label htmlFor="slides_2" className="slide" matripple="true">
               <h3>{t("card1_t3")}</h3>
               <p>{t("card1_t4")}</p>
             </label>
 
-            <label for="slides_3" class="slide" matRipple>
+            <label htmlFor="slides_3" className="slide" matripple="true">
               <h3>{t("card1_t5")}</h3>
               <p>{t("card1_t6")}</p>
             </label>

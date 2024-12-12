@@ -14,7 +14,7 @@ const About = lazy(() => import("./pages/About.js"));
 
 function App() {
   return (
-    <LocaleContext.Provider>
+    <LocaleContext.Provider value={LocaleContext}>
       <Suspense fallback={<Loader />}>
         <BrowserRouter>
           <Routes>

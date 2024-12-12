@@ -9,7 +9,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-import Logo from "../../Images/calidia.png";
+import Logo from "../../Images/calidia.webp";
 
 import { IoIosArrowUp, IoLogoWhatsapp } from "react-icons/io";
 import { useTranslation } from "react-i18next";

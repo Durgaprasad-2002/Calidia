@@ -10,10 +10,10 @@ import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import "animate.css";
 
-import rice from "../../Images/HomeMultiSlider/rice.jpeg";
-import flour from "../../Images/HomeMultiSlider/flour.jpeg";
-import veg from "../../Images/HomeMultiSlider/veg.jpeg";
-import pulses from "../../Images/HomeMultiSlider/pulses.avif";
+import rice from "../../Images/HomeMultiSlider/rice.webp";
+import flour from "../../Images/HomeMultiSlider/flour.webp";
+import veg from "../../Images/HomeMultiSlider/veg.webp";
+import pulses from "../../Images/HomeMultiSlider/pulses.webp";
 import fruits from "../../Images/HomeMultiSlider/fruits.webp";
 
 export default function Card2() {

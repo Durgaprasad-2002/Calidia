@@ -14,7 +14,7 @@ export default function Footer(props) {
 
   return (
     <>
-      <div class="footer">
+      <div className="footer">
         <div className="contacts">
           <div className="items">
             <br />
