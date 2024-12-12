@@ -12,10 +12,14 @@
 
 .slider {
   overflow: "hidden";
+  background-image: url(../Images/CoverImages/cv1.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .slider img {
-  background: rgb(20, 20, 20);
+  /* background: rgb(20, 20, 20); */
   will-change: contents;
   transition: all 0.3s ease;
   object-fit: cover;

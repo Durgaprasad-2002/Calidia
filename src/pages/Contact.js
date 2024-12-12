@@ -37,7 +37,7 @@ export default function Contact() {
     e.preventDefault();
     setLoading(() => true);
     axios
-      .post("http://localhost:5000/api/contact", { ...formData })
+      .post("https://calidiaserver.onrender.com/api/contact", { ...formData })
       .then(() => {
         form.current.reset();
         toast.success(t("toast_t3"));

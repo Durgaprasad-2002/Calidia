@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import "../index.css";
 
 import Carousel from "react-multi-carousel";
@@ -27,6 +27,30 @@ const sliderImageUrl = [Img1, Img2, Img3, Img4];
 const Slider = () => {
   const { t } = useTranslation();
 
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Use useEffect to ensure images are cached
+  useEffect(() => {
+    const loadImages = () => {
+      const imagePromises = sliderImageUrl.map((imageUrl) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = imageUrl;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      });
+
+      Promise.all(imagePromises)
+        .then(() => {
+          setImagesLoaded(true);
+        })
+        .catch((err) => console.error("Error loading images:", err));
+    };
+
+    loadImages();
+  }, []);
+
   return (
     <div className="parent">
       {/* Overlay Text Section */}
@@ -43,7 +67,7 @@ const Slider = () => {
       <Carousel
         responsive={responsive}
         autoPlay={true}
-        autoPlaySpeed={3000}
+        autoPlaySpeed={5000}
         swipeable={true}
         draggable={true}
         showDots={false}
@@ -58,13 +82,17 @@ const Slider = () => {
             <Suspense
               fallback={<div className="image-placeholder">Loading...</div>}
             >
-              <img
-                src={imageUrl}
-                alt={`slider-Img-${index}`}
-                loading="lazy"
-                tabIndex="-1"
-                className="carousel-image"
-              />
+              {imagesLoaded ? (
+                <img
+                  src={imageUrl}
+                  alt={`slider-Img-${index}`}
+                  loading="lazy"
+                  tabIndex="-1"
+                  className="carousel-image"
+                />
+              ) : (
+                <div className="image-placeholder">Loading...</div>
+              )}
             </Suspense>
           </div>
         ))}
@@ -84,6 +112,7 @@ export default Slider;
 
 // import { useTranslation } from "react-i18next";
 
+// // Optimized image imports
 // import Img1 from "../../Images/CoverImages/cv1.webp";
 // import Img2 from "../../Images/CoverImages/cv2.webp";
 // import Img3 from "../../Images/CoverImages/cv3.webp";
@@ -97,6 +126,7 @@ export default Slider;
 //   },
 // };
 
+// // Array of slider images
 // const sliderImageUrl = [Img1, Img2, Img3, Img4];
 
 // const Slider = () => {
@@ -104,6 +134,7 @@ export default Slider;
 
 //   return (
 //     <div className="parent">
+//       {/* Overlay Text Section */}
 //       <div className="Text-over-outer">
 //         <div className="Text-over">
 //           <h3>
@@ -112,33 +143,36 @@ export default Slider;
 //           <p>{t("slider_t1")}</p>
 //         </div>
 //       </div>
+
+//       {/* Carousel Component */}
 //       <Carousel
 //         responsive={responsive}
 //         autoPlay={true}
+//         autoPlaySpeed={5000}
 //         swipeable={true}
 //         draggable={true}
 //         showDots={false}
 //         infinite={true}
-//         partialVisible={false}
 //         arrows={false}
 //         dotListClass="custom-dot-list-style"
+//         containerClass="carousel-container"
+//         keyBoardControl={true}
 //       >
-//         {sliderImageUrl.map((imageUrl, index) => {
-//           return (
-//             <div className="slider" key={index}>
-//               <Suspense
-//                 fallback={<div className="image-placeholder">Loading...</div>}
-//               >
-//                 <img
-//                   src={imageUrl}
-//                   alt={`slider-Img-${index}`}
-//                   loading="lazy"
-//                   tabIndex="-1"
-//                 />
-//               </Suspense>
-//             </div>
-//           );
-//         })}
+//         {sliderImageUrl.map((imageUrl, index) => (
+//           <div className="slider" key={index}>
+//             <Suspense
+//               fallback={<div className="image-placeholder">Loading...</div>}
+//             >
+//               <img
+//                 src={imageUrl}
+//                 alt={`slider-Img-${index}`}
+//                 loading="lazy"
+//                 tabIndex="-1"
+//                 className="carousel-image"
+//               />
+//             </Suspense>
+//           </div>
+//         ))}
 //       </Carousel>
 //     </div>
 //   );
