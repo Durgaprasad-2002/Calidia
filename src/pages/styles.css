@@ -19,7 +19,6 @@
 }
 
 .slider img {
-  /* background: rgb(20, 20, 20); */
   will-change: contents;
   transition: all 0.3s ease;
   object-fit: cover;
@@ -43,9 +42,6 @@
   background: rgb(255, 68, 68) !important;
 }
 
-/* ---------------------------- */
-
-/* Example custom CSS for transition */
 .carousel-slide-enter {
   opacity: 0;
   transform: scale(0.8);
@@ -66,4 +62,27 @@
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.5s ease-in-out;
+}
+
+/* -----------------------------carouselHom2------- */
+
+.cr-slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin: 0 auto;
+  transform: translateY(-40px);
+  margin-bottom: -40px;
+}
+
+.cr-image-slider {
+  display: flex;
+  transition: transform 0.5s ease-in;
+}
+
+.cr-slider-image {
+  width: 100vw;
+  min-width: 100%;
+  object-fit: cover;
+  height: 110vh;
 }

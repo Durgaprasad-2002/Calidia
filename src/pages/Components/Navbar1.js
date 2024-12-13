@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 
-import "../index.css";
+// import "../index.css";
 
 // Bootstarp Components
 import Container from "react-bootstrap/Container";
@@ -90,7 +90,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
         >
           <IoLogoWhatsapp className="whatapp-icon" />
         </a>
-        <div className="support show">24/7 Support</div>
+        <div className="support show-whatsapp">24/7 Support</div>
       </div>
       <button
         className="btn-7"
@@ -148,7 +148,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
             <Offcanvas.Header closeButton className="close">
               <Offcanvas.Title
                 id="offcanvasNavbarLabel-expand-lg"
-                style={{ color: "black" }}
+                style={{ color: "#c08527" }}
               >
                 <i>{t("about_t5")}</i>
               </Offcanvas.Title>

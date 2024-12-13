@@ -112,7 +112,7 @@
   font-weight: bold;
 }
 
-.show {
+.show-whatsapp {
   display: none;
   animation: sc-side 0.3s ease;
 }
@@ -130,7 +130,7 @@
   }
 }
 
-.WHATASPP:hover .support.show {
+.WHATASPP:hover .support.show-whatsapp {
   display: flex;
 }
 
@@ -233,34 +233,12 @@
   z-index: initial;
 }
 
-/* Add this to your CSS */
 .navbar-toggler {
   transition: transform 0.3s ease;
 }
 
 .navbar-toggler-icon {
   transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-/* Add this to your CSS (or modify your existing classes) */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 0; /* Adjust padding on mobile */
-  }
-
-  .navbar-nav {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .logo-outer {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .LogoImg img {
-    width: 50px; /* Adjust logo size for mobile */
-  }
 }
 
 /* ------------------------------------------------------------ */
@@ -1933,4 +1911,57 @@ body {
 
 .not-found-link:hover {
   background-color: #0056b3;
+}
+
+/* ----------------------------- */
+@media screen and (max-width: 991px) {
+  .navbar {
+    padding: 10px 0; /* Adjust padding on mobile */
+  }
+
+  .navbar-nav {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .logo-outer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .LogoImg img {
+    width: 70px;
+  }
+  .outer-li {
+    cursor: pointer;
+    /* width: 100px; */
+    width: 100%;
+    background: rgb(93, 92, 92);
+    border-radius: 4px;
+    margin: 7px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .nav-item {
+    padding: 0px;
+    margin: 0px;
+    padding: 10px 10px;
+    font-weight: 500;
+  }
+
+  .outer-li.active {
+    background-color: #386909;
+  }
+  .outer-li:hover {
+    background-color: rgb(56, 55, 55);
+  }
+
+  .nav-item::before,
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    height: 0;
+  }
 }

@@ -17,7 +17,7 @@ import Img5 from "../Images/Scroll-images/sc5.webp";
 import Img6 from "../Images/Scroll-images/sc6.webp";
 import Img7 from "../Images/Scroll-images/sc7.webp";
 
-const CarouselHome = lazy(() => import("./Components/CarouselHome.js"));
+const CarouselHome = lazy(() => import("./Components/CarouselH2.js"));
 const FeaturesCard = lazy(() => import("./Components/Features_card.js"));
 const Card2 = lazy(() => import("./Components/ProductsInfoHome.js"));
 
