@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../index.css";
 import "../styles.css";
-import Img1 from "../../Images/CoverImages/cv1.webp";
-import Img2 from "../../Images/CoverImages/cv2.webp";
-import Img3 from "../../Images/CoverImages/cv3.webp";
-import Img4 from "../../Images/CoverImages/cv4.webp";
+import Img1 from "../../Images/CoverImages/cv-1.jpg";
+import Img2 from "../../Images/CoverImages/cv-2.jpg";
+import Img3 from "../../Images/CoverImages/cv-3.jpg";
+// import Img4 from "../../Images/CoverImages/cv4.webp";
 import { useTranslation } from "react-i18next";
 
-const images = [Img1, Img2, Img3, Img4];
+const images = [Img1, Img2, Img3];
 
 const Slider = () => {
   const { t } = useTranslation();

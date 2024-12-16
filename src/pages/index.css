@@ -1575,7 +1575,7 @@ body {
 }
 
 .info-box {
-  border-bottom: 7px solid #386909;
+  border-bottom: 5px solid #386909;
   position: relative;
   margin: auto -40px;
   max-width: 500px;
@@ -1936,7 +1936,7 @@ body {
     cursor: pointer;
     /* width: 100px; */
     width: 100%;
-    background: rgb(93, 92, 92);
+    /* background: rgb(93, 92, 92); */
     border-radius: 4px;
     margin: 7px 0px;
     display: flex;

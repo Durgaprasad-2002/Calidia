@@ -22,7 +22,7 @@ export default function Features_card() {
     <div
       ref={ref2}
       className={`Features content-section ${
-        view2 ? `animate__animated animate__bounceInUp  content-vis` : ""
+        view2 ? `animate__animated animate__flipInX content-vis` : ""
       }`}
     >
       <div className="carousel-wrapper">

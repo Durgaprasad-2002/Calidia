@@ -154,7 +154,7 @@ function NavbarApp({ bg: propBg, home, cartpos, navscroll, showBG }) {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-0">
                 {navItems.map(({ path: navPath, label }) => (
                   <li
                     key={navPath}
